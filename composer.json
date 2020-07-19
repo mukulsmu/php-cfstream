@@ -1,5 +1,5 @@
 {
-    "name": "jianjye/php-cfstream",
+    "name": "mukulsmu/php-cfstream",
     "description": "Upload and manage Cloudflare Stream easily",
     "require": {
         "php": ">=5.5",
@@ -12,7 +12,7 @@
             "email": "seejianjye@gmail.com"
         }
     ],
-    "homepage": "https://github.com/jianjye/php-cfstream",
+    "homepage": "https://github.com/mukulsmu/php-cfstream",
     "license": "MIT",
     "keywords": [
         "cfstream",
