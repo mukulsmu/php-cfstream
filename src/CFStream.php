@@ -67,15 +67,13 @@ class CFStream
         if (!$file) {
             throw new InvalidFileException();
         }
-
         if ($remote) {
-            $headers = $this->client->head($filepath);
-            dd($headers);
+            $filesize = $this->client->head($filepath)->getContentLength();
         }
         else {
             $filesize = filesize($filepath);
-            $filename = basename($filepath);
         }      
+        $filename = basename($filepath);
 
         $response = $this->post($filename, $filesize);
         $resourceUrl = $response->getHeader('Location')[0];
