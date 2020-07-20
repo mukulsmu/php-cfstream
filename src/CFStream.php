@@ -68,7 +68,7 @@ class CFStream
             throw new InvalidFileException();
         }
         if ($remote) {
-            $filesize = $this->client->head($filepath)->getContentLength();
+            $filesize = $this->client->head($filepath)->getHeader('Content-Length');
         }
         else {
             $filesize = filesize($filepath);
