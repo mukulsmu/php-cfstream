@@ -61,15 +61,21 @@ class CFStream
      *
      * @return string $resourceUrl URL to manage the video resource
      */
-    public function upload($filepath)
+    public function upload($filepath, $remote = false)
     {
         $file = fopen($filepath, 'r');
         if (!$file) {
             throw new InvalidFileException();
         }
 
-        $filesize = filesize($filepath);
-        $filename = basename($filepath);
+        if ($remote) {
+            $headers = $this->client->head($filepath);
+            dd($headers);
+        }
+        else {
+            $filesize = filesize($filepath);
+            $filename = basename($filepath);
+        }      
 
         $response = $this->post($filename, $filesize);
         $resourceUrl = $response->getHeader('Location')[0];
